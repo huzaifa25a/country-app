@@ -22,7 +22,7 @@ const Home = () => {
       </div>
       <div className='p-10 flex flex-col items-center justify-center gap-4'>
         <h2 className='text-[24px] font-semibold mb-[20px]'>🌍 World Explorer</h2>
-        <span className='w-[650px] text-[18px] text-justify'>
+        <span className='max-w-[650px] text-[18px] text-justify p-2'>
           Discover detailed information about every country on the planet — including flags, capitals, languages, currencies, population, and interactive maps.
           Start exploring and learn more about the world, one country at a time!
         </span>

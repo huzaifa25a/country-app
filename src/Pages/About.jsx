@@ -4,9 +4,9 @@ import profile from '../assets/profile-2.jpg'
 const About = () => {
   return (
     <div className='w-full mt-[100px]'>
-      <div className='flex items-center justify-center gap-20'>
-        <div className='w-[600px] flex flex-col gap-3'>
-          <h1 className='text-center font-bold text-[20px] mb-2'>About me</h1>
+      <div className='flex flex-wrap justify-center gap-20'>
+        <div className='w-[600px] flex flex-col gap-3 p-6'>
+          <h1 className='text-center font-bold text-[20px] mb-6'>About me</h1>
           <span className='text-[16px]'>👋 Hi, I’m Huzaifa!</span>
           <span className='text-[16px] text-justify'>
             I love building fun and interesting projects and I’m on a journey to become a better developer every day.<br/>
@@ -21,8 +21,15 @@ const About = () => {
         </div>
         <div className='flex flex-col items-center gap-1'>
           <img src={profile} alt='My profile Picture' className='rounded-[100%] bg-[#ffff] h-[400px] w-[400px] mb-[10px]'/>
-          <span>Huzaifa Pachisa</span>
-          <span>Full-Stack developer</span>
+          <span className='font-bold'>Huzaifa Pachisa</span>
+          <span className='font-medium'>Full-Stack developer</span>
+          <a 
+            href='https://huzaifa25a.site/' 
+            target='_blank' 
+            className='mt-[10px] border-2 px-2 py-1 hover:bg-[#b6b6b6c9] rounded-md hover:scale-105 transition-all duration-200'
+          >
+            Visit my portfolio
+          </a>
         </div>
       </div>
     </div>
