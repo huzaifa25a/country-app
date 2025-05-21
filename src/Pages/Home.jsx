@@ -2,6 +2,8 @@ import React from 'react'
 import earth from '../assets/rotating_earth.gif'
 import darkBg from '../assets/dark_bg.png'
 import { NavLink } from 'react-router'
+import Footer from '../Footer';
+
 
 const Home = () => {
   return (
@@ -28,6 +30,7 @@ const Home = () => {
         </span>
         <span className='hover:bg-[#b6b6b6c9] p-2 rounded-md hover:scale-105 transition-all duration-200 text-[18px]'><NavLink to='/country'>View all countries</NavLink></span>
       </div>
+      <Footer/>
     </>
   )
 }
