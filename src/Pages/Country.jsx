@@ -19,11 +19,11 @@ const Country = () => {
         setLoading(true);
         const countriesInfo = await fetch('https://restcountries.com/v3.1/all');
         const response = await countriesInfo.json();
+        console.log("Results: ",response);
         if(response){
             setLoading(false);
             setCountryInfo(response);
         }
-        console.log(response);
     }
 
     useEffect(() => {
@@ -66,6 +66,7 @@ const Country = () => {
     function sortCountry(e){
         const list = [...countryInfo];
         const buttonType = e.target.id;
+        const language = e.target.value;
 
         if(buttonType === 'byA-Z'){
             setActiveFilter('byA-Z');
@@ -83,7 +84,19 @@ const Country = () => {
             setActiveFilter('LowPop');
             list.sort((a,b) => a.population - b.population);
         }
-        console.log("The sorted countries are: ", list.map((item) => item.name.common));
+        else if(language){
+            console.log("Language Selected: ", language);
+            if(language === 'Select a Language'){
+                setFilteredResults([]);
+                setShowFilteredResults(false);
+                return;
+            }
+            const filteredList = list.filter((country) => country.languages ? Object.values(country.languages).map((lang) => lang).includes(language) : null);
+            console.log(language, "Speaking countries: ", filteredList);
+            setFilteredResults(filteredList);
+            setShowFilteredResults(true);
+            return
+        }
         setFilteredResults(list);
         setShowFilteredResults(true);
     }
@@ -111,7 +124,7 @@ const Country = () => {
                     Filter
                 </button>
                 {showFilter && 
-                    <div className='flex gap-3'>
+                    <div className='flex gap-3 p-2 bg-[#ffffff39] rounded-lg'>
                         <button 
                             id='byA-Z'
                             className={`p-1 rounded-md cursor-pointer text-[#ffffff94] hover:text-[#ffff] ${activeFilter === 'byA-Z'? 'text-white' : ''}`}
@@ -140,6 +153,14 @@ const Country = () => {
                         >
                             Lowest population
                         </button>
+                        <select id='language' onChange={sortCountry}>
+                            <option className='text-black'>Select a Language</option>
+                            <option className='text-black'>English</option>
+                            <option className='text-black'>Hindi</option>
+                            <option className='text-black'>Spanish</option>
+                            <option className='text-black'>French</option>
+                            <option className='text-black'>German</option>
+                        </select>
                     </div>
                 }
             </div>
@@ -174,7 +195,7 @@ const Country = () => {
                                     <span 
                                         className='text-black font-medium'
                                     >
-                                        Population: {country.population}
+                                        Population: {country.population.toLocaleString('en-IN')}
                                     </span>
                                 </div>
                             </div>
@@ -217,7 +238,7 @@ const Country = () => {
                                     <span 
                                         className='text-black font-medium'
                                     >
-                                        Population: {country.population}
+                                        Population: {country.population.toLocaleString('en-IN')}
                                     </span>
                                 </div>
                             </div>
@@ -260,7 +281,7 @@ const Country = () => {
                                     <span 
                                         className='text-black font-medium'
                                     >
-                                        Population: {country.population}
+                                        Population: {country.population.toLocaleString('en-IN')}
                                     </span>
                                 </div>
                             </div>
