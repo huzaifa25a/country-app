@@ -120,8 +120,8 @@ const Country = () => {
     <>
     <div className='flex flex-col items-center justify-center pt-30'>   
         <h1 className='text-[32px] font-semibold text-center'>World Countries Information</h1>
-        <div id='searchFilter' className='flex flex-wrap gap-5 items-center justify-start w-full p-4'>
-            <div className='flex gap-5 items-center p-4'>
+        <div id='searchFilter' className='flex flex-wrap gap-10 items-center justify-start w-full p-4'>
+            <div className='flex gap-2 items-center px-2 py-4'>
                 <img src={search} className='h-[24px]'/>
                 <input
                     className='p-1.5 rounded-md border-[#979797] bg-[#979797e2] max-w-[400px]'
@@ -131,7 +131,7 @@ const Country = () => {
                     onChange={(e) => {setShowFilter(false); setShowFilteredResults(false); findCounty(e.target.value)}}
                 />
             </div>
-            <div className='flex gap-6 items-center p-4'>
+            <div className='flex gap-6 items-center px-2 py-4'>
                 {!showFilter && 
                     <button 
                         className={`px-2 py-1 rounded-md cursor-pointer border-2 border-white transition-all duration-75 hover:bg-[#6e6e6eb0] active:bg-[#6e6e6eb0] ${showFilter ? 'bg-[#6e6e6eb0]' : ''}`}
