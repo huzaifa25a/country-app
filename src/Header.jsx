@@ -1,17 +1,18 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import logo from '../src/assets/logo.png'
+import './index.css'
 
 const Header = () => {
   return (
-    <nav className='fixed top-0 w-full h-16 z-50 bg-[#3a3a3a] border-b-2 border-[#2f2f2f] flex justify-between px-4 py-1'>
+    <nav id='nav' className='fixed top-0 w-full h-16 z-50 bg-[#3a3a3a] border-b-2 border-[#2f2f2f] flex justify-between px-4 py-1'>
       <NavLink to='/'>
         <div className='flex gap-2 items-center'>
-          <img src={logo} alt='logo' className='h-[64px]' />
-          <span className='text-[18px]'>World Explorer App</span>
+          <img id='logo' src={logo} alt='logo' className='h-[64px]' />
+          <span className=''>World Explorer App</span>
         </div>
       </NavLink>
-      <ul className='flex gap-6 p-4 text-white'>
+      <ul className='flex gap-6 p-5 text-white'>
         <li>
           <NavLink
             to='/'

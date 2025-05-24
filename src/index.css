@@ -5,3 +5,38 @@ body{
   color: white;
   font-family: cursive;
 }
+
+@media screen and (max-width: 1040px) {
+  #homeBg{
+    gap: 10px;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  #rotating_earth{
+    height: 400px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #rotating_earth{
+    max-height: 350px;
+    max-width: 350px;
+  }
+
+  #about{
+    gap: 5px;
+  }
+
+  #profileImg{
+    height: 300px;
+    width: 300px;
+  }
+}
+
+@media screen and (max-width: 712px) {
+  #searchFilter{
+    justify-content: center;
+    gap: 0px;
+  }
+}

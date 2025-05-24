@@ -7,7 +7,7 @@ const About = () => {
   return (
     <>
       <div className='w-full mt-[100px]'>
-        <div className='flex flex-wrap justify-center gap-20'>
+        <div id='about' className='flex flex-wrap justify-center gap-20'>
           <div className='w-[600px] flex flex-col gap-3 p-6'>
             <h1 className='text-center font-bold text-[20px] mb-6'>About me</h1>
             <span className='text-[16px]'>👋 Hi, I’m Huzaifa!</span>
@@ -23,7 +23,7 @@ const About = () => {
             </span>
           </div>
           <div className='flex flex-col items-center gap-1'>
-            <img src={profile} alt='My profile Picture' className='rounded-[100%] bg-[#ffff] h-[400px] w-[400px] mb-[10px]'/>
+            <img id='profileImg' src={profile} alt='My profile Picture' className='rounded-[100%] bg-[#ffff] h-[400px] w-[400px] mb-[10px]'/>
             <span className='font-bold'>Huzaifa Pachisa</span>
             <span className='font-medium'>Full-Stack developer</span>
             <a 
