@@ -118,8 +118,8 @@ const Country = () => {
     
   return (
     <>
-    <div className='flex flex-col items-center justify-center pt-30'>   
-        <h1 className='text-[32px] font-semibold text-center'>World Countries Information</h1>
+    <div id='country' className='flex flex-col items-center justify-center pt-30'>   
+        <h1 className='text-[32px] font-semibold text-center mb-[20px]'>World Countries Information</h1>
         <div id='searchFilter' className='flex flex-wrap gap-10 items-center justify-start w-full p-4'>
             <div className='flex gap-2 items-center px-2 py-4'>
                 <img src={search} className='h-[24px]'/>

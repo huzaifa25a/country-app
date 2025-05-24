@@ -9,10 +9,10 @@ const Header = () => {
       <NavLink to='/'>
         <div className='flex gap-2 items-center'>
           <img id='logo' src={logo} alt='logo' className='h-[64px]' />
-          <span className=''>World Explorer App</span>
+          <span className=''>World Explorer</span>
         </div>
       </NavLink>
-      <ul className='flex gap-6 p-5 text-white'>
+      <ul id='navLinks' className='flex gap-6 p-5 text-white'>
         <li>
           <NavLink
             to='/'

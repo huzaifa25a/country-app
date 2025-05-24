@@ -6,7 +6,7 @@ import Footer from '../Footer';
 const About = () => {
   return (
     <>
-      <div className='w-full mt-[100px]'>
+      <div id='aboutMain' className='w-full mt-[100px]'>
         <div id='about' className='flex flex-wrap justify-center gap-20'>
           <div className='w-[600px] flex flex-col gap-3 p-6'>
             <h1 className='text-center font-bold text-[20px] mb-6'>About me</h1>

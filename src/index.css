@@ -28,9 +28,21 @@ body{
     gap: 5px;
   }
 
+  #aboutMain{
+    margin-top: 60px;
+  }
+
   #profileImg{
     height: 300px;
     width: 300px;
+  }
+
+  #navLinks{
+    gap: 16px;
+  }
+
+  #country{
+    padding-top: 80px;
   }
 }
 
