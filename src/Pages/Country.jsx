@@ -132,47 +132,40 @@ const Country = () => {
                 />
             </div>
             <div className='flex gap-6 items-center p-4'>
-                {showFilter ? 
+                {!showFilter && 
                     <button 
-                        className={`px-2 py-1 rounded-md cursor-pointer border-2 border-white transition-all duration-75 hover:bg-[#6e6e6eb0] ${showFilter ? 'bg-[#6e6e6eb0]' : ''}`}
-                        onClick={() => {setShowFilter(false); setShowFilteredResults(false); setFilteredResults([]); setActiveFilter('')}}
-                    >
-                        Clear
-                    </button>
-                    :
-                    <button 
-                        className={`px-2 py-1 rounded-md cursor-pointer border-2 border-white transition-all duration-75 hover:bg-[#6e6e6eb0] ${showFilter ? 'bg-[#6e6e6eb0]' : ''}`}
+                        className={`px-2 py-1 rounded-md cursor-pointer border-2 border-white transition-all duration-75 hover:bg-[#6e6e6eb0] active:bg-[#6e6e6eb0] ${showFilter ? 'bg-[#6e6e6eb0]' : ''}`}
                         onClick={() => {setShowFilter(true)}}
                     >
                         Filter
                     </button>
                 }
                 {showFilter && 
-                    <div className='flex flex-wrap gap-3 px-2 bg-[#ffffff39] rounded-lg'>
+                    <div className='flex flex-wrap gap-3 px-2 bg-[#ffffff39] rounded-lg py-2'>
                         <button 
                             id='byA-Z'
-                            className={`p-1 rounded-md cursor-pointer text-[#ffffff94] hover:text-[#ffff] ${activeFilter === 'byA-Z'? 'text-white' : ''}`}
+                            className={`p-1 rounded-md cursor-pointer text-[#ffffff94] hover:text-[#ffff] active:text-[#ffff] ${activeFilter === 'byA-Z'? 'text-white' : ''}`}
                             onClick={sortCountry}
                         >
                             A-Z
                         </button>
                         <button 
                             id='byZ-A'
-                            className={`p-1 rounded-md cursor-pointer text-[#ffffff94] hover:text-[#ffff] ${activeFilter === 'byZ-A' ? 'text-white' : ''}`}
+                            className={`p-1 rounded-md cursor-pointer text-[#ffffff94] hover:text-[#ffff] active:text-[#ffff] ${activeFilter === 'byZ-A' ? 'text-white' : ''}`}
                             onClick={sortCountry}
                         >
                             Z-A
                         </button>
                         <button 
                             id='HighPop'
-                            className={`p-1 rounded-md cursor-pointer text-[#ffffff94] hover:text-[#ffff] ${activeFilter === 'HighPop' ? 'text-white' : ''}`}
+                            className={`p-1 rounded-md cursor-pointer text-[#ffffff94] hover:text-[#ffff] active:text-[#ffff] ${activeFilter === 'HighPop' ? 'text-white' : ''}`}
                             onClick={sortCountry}
                         >
                             Highest population
                         </button>
                         <button 
                             id='LowPop'
-                            className={`p-1 rounded-md cursor-pointer text-[#ffffff94] hover:text-[#ffff] ${activeFilter === 'LowPop' ? 'text-white' : ''}`}
+                            className={`p-1 rounded-md cursor-pointer text-[#ffffff94] hover:text-[#ffff] active:text-[#ffff] ${activeFilter === 'LowPop' ? 'text-white' : ''}`}
                             onClick={sortCountry}
                         >
                             Lowest population
@@ -180,7 +173,7 @@ const Country = () => {
                         <select 
                             id='lang' 
                             onChange={filterByLanguage} 
-                            className={`text-[#ffffff94] cursor-pointer hover:text-[#ffff] ${activeFilter === 'language' ? 'text-white' : ''}`}
+                            className={`text-[#ffffff94] cursor-pointer hover:text-[#ffff] active:text-[#ffff] ${activeFilter === 'language' ? 'text-white' : ''}`}
                         >
                             <option className='text-black'>Select a Language</option>
                             <option className='text-black'>English</option>
@@ -193,7 +186,7 @@ const Country = () => {
                         <select 
                             id='curr' 
                             onChange={filterByCurrency}
-                            className={`text-[#ffffff94] cursor-pointer hover:text-[#ffff] ${activeFilter === 'currency' ? 'text-white' : ''}`}
+                            className={`text-[#ffffff94] cursor-pointer hover:text-[#ffff] active:text-[#ffff] ${activeFilter === 'currency' ? 'text-white' : ''}`}
                         >
                             <option className='text-black'>Select a Currency</option>
                             <option className='text-black'>dollar ($)</option>
@@ -203,6 +196,15 @@ const Country = () => {
                             <option className='text-black'>dirham</option>
                             <option className='text-black'>rupee (₹)</option>
                         </select>
+
+                        {showFilter && 
+                            <button 
+                                className={`rounded-md py-0.5 px-1 cursor-pointer transition-all duration-75 text-black bg-[#ffff]`}
+                                onClick={() => {setShowFilter(false); setShowFilteredResults(false); setFilteredResults([]); setActiveFilter('')}}
+                            >
+                                Clear Filter
+                            </button>
+                        }
                     </div>
                 }
             </div>
@@ -211,9 +213,9 @@ const Country = () => {
             {showSearchResults ? 
                 searchResults.map((country, index) => {
                     return(
-                        <div key={index} className='w-[330px] h-[400px] flex flex-col items-center justify-around rounded-md border-2 border-[#b3b3b3] bg-[#ffffffbc] transition-all duration-300 hover:scale-105 hover:bg-[#ffffff69] shadow-inner cursor-pointer'>
+                        <div key={index} className='w-auto h-auto p-1 flex flex-col items-center justify-around rounded-md border-2 border-[#b3b3b3] bg-[#ffffffbc] transition-all duration-300 hover:scale-105 hover:bg-[#ffffffa1] shadow-inner cursor-pointer active:scale-105 active:bg-[#ffffffa1]'>
                             <img src={country.flags.png} alt='India' className='h-[150px] w-[300px] rounded shadow-lg'/>
-                            <div className='flex flex-col w-[300px] justify-center items-center'>
+                            <div className='flex flex-col w-[300px] justify-center items-center mb-[30px]'>
                                 <span className='text-black font-bold text-center mb-3'>{country.name.common}</span>
                                 <div className='flex flex-col text-start w-[250px] gap-1'>
                                     <span 
@@ -242,7 +244,7 @@ const Country = () => {
                                 </div>
                             </div>
                             <a 
-                                className='rounded-md bg-[#4a8eb8] px-2 py-1 transition-transform duration-200 hover:scale-105 cursor-pointer' 
+                                className='rounded-md bg-[#4a8eb8] px-2 py-1 transition-transform duration-200 hover:scale-105 cursor-pointer active:scale-105' 
                                 href={country.maps.googleMaps} 
                                 target='_blank' 
                                 rel='noreferrer'
@@ -254,9 +256,9 @@ const Country = () => {
                 }) :   showFilteredResults?
                 filteredResults.slice(0, visibleCount).map((country, index) => {
                     return(
-                        <div key={index} className='w-[330px] h-[400px] flex flex-col items-center justify-around rounded-md border-2 border-[#b3b3b3] bg-[#ffffffdc] transition-all duration-300 hover:scale-105 hover:bg-[#ffffffa1] shadow-inner cursor-pointer'>
+                        <div key={index} className='w-auto h-auto p-1 flex flex-col items-center justify-around rounded-md border-2 border-[#b3b3b3] bg-[#ffffffdc] transition-all duration-300 hover:scale-105 hover:bg-[#ffffffa1] shadow-inner cursor-pointer active:scale-105 active:bg-[#ffffffa1]'>
                             <img src={country.flags.png} alt='India' className='h-[150px] w-[300px] rounded shadow-lg'/>
-                            <div className='flex flex-col w-[300px] justify-center items-center'>
+                            <div className='flex flex-col w-[300px] justify-center items-center mb-[30px]'>
                                 <span className='text-black font-bold text-center mb-3'>{country.name.common}</span>
                                 <div className='flex flex-col text-start w-[250px] gap-1'>
                                     <span 
@@ -285,7 +287,7 @@ const Country = () => {
                                 </div>
                             </div>
                             <a 
-                                className='rounded-md bg-[#4a8eb8] px-2 py-1 transition-transform duration-200 hover:scale-105 cursor-pointer' 
+                                className='rounded-md bg-[#4a8eb8] px-2 py-1 transition-transform duration-200 hover:scale-105 cursor-pointer active:scale-105' 
                                 href={country.maps.googleMaps} 
                                 target='_blank' 
                                 rel='noreferrer'
@@ -297,9 +299,9 @@ const Country = () => {
                 }) :  !DefaultResult ?
                 countryInfo.slice(0, visibleCount).map((country, index) => {
                     return(
-                        <div key={index} className='w-[330px] h-[400px] flex flex-col items-center justify-around rounded-md border-2 border-[#b3b3b3] bg-[#ffffffdc] transition-all duration-300 hover:scale-105 hover:bg-[#ffffffa1] shadow-inner cursor-pointer'>
+                        <div key={index} className='w-auto h-auto p-1 flex flex-col items-center justify-around rounded-md border-2 border-[#b3b3b3] bg-[#ffffffdc] transition-all duration-300 hover:scale-105 hover:bg-[#ffffffa1] shadow-inner cursor-pointer active:scale-105 active:bg-[#ffffffa1]'>
                             <img src={country.flags.png} alt='India' className='h-[150px] w-[300px] rounded shadow-lg'/>
-                            <div className='flex flex-col w-[300px] justify-center items-center'>
+                            <div className='flex flex-col w-[300px] justify-center items-center mb-[30px]'>
                                 <span className='text-black font-bold text-center mb-3'>{country.name.common}</span>
                                 <div className='flex flex-col text-start w-[250px] gap-1'>
                                     <span 
@@ -328,7 +330,7 @@ const Country = () => {
                                 </div>
                             </div>
                             <a 
-                                className='rounded-md bg-[#4a8eb8] px-2 py-1 transition-transform duration-200 hover:scale-105 cursor-pointer' 
+                                className='rounded-md bg-[#4a8eb8] px-2 py-1 transition-transform duration-200 hover:scale-105 cursor-pointer active:scale-105' 
                                 href={country.maps.googleMaps} 
                                 target='_blank' 
                                 rel='noreferrer'
@@ -357,13 +359,13 @@ const Country = () => {
              (visibleCount < filteredResults.length && showFilteredResults && filteredResults.length > 16)?
                 <div className='flex gap-10'> 
                     <button 
-                        className='p-1 rounded-md cursor-pointer transition-all duration-200 hover:scale-110 hover:bg-[#6e6e6eb0]'
+                        className='p-1 rounded-md cursor-pointer transition-all duration-200 hover:scale-110 hover:bg-[#6e6e6eb0] active:bg-[#6e6e6eb0] active:scale-110'
                         onClick={() => setVisibleCount((prev) => prev + 16)}
                     >
                         <span>view more</span>
                     </button>
                     <button 
-                        className='border-transparent border-b-2 cursor-pointer transition-all duration-200 hover:scale-110 hover:border-white'
+                        className='border-transparent border-b-2 cursor-pointer transition-all duration-200 hover:scale-110 hover:border-white active:border-white active:scale-110'
                         onClick={() => setVisibleCount((prev) => prev + countryInfo.length-prev)}
                     >
                         <span>view all</span>

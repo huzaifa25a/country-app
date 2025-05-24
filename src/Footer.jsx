@@ -10,13 +10,13 @@ const Footer = () => {
             <span>Reach out to me on</span>
             <div className='flex gap-2 items-center'>
                 <a href='mailto:pachisahuzaifa@gmail.com' target='_blank'>
-                    <img src={gmail} alt='Gmail' className='h-[34px] transition-transform duration-200 hover:scale-110'/>
+                    <img src={gmail} alt='Gmail' className='h-[34px] transition-transform duration-200 hover:scale-110 active:scale-110'/>
                 </a>
                 <a href='https://www.linkedin.com/in/huzaifa-pachisa-a0723a1b6/' target='_blank'>
-                    <img src={linkedin} alt='LinkedIn' className='h-[34px] transition-transform duration-200 hover:scale-110'/>
+                    <img src={linkedin} alt='LinkedIn' className='h-[34px] transition-transform duration-200 hover:scale-110 active:scale-110'/>
                 </a>
                 <a href='https://github.com/huzaifa25a' target='_blank'>
-                    <img src={github} alt='Github' className='h-[34px] transition-transform duration-200 hover:scale-110'/>
+                    <img src={github} alt='Github' className='h-[34px] transition-transform duration-200 hover:scale-110 active:scale-110'/>
                 </a>
             </div>
             <span>Created by Huzaifa P © 2025</span>

@@ -3,7 +3,7 @@
 body{
   background-color: #3a3a3a;
   color: white;
-  font-family: cursive;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 
 @media screen and (max-width: 1040px) {

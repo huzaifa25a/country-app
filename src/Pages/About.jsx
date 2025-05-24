@@ -29,7 +29,7 @@ const About = () => {
             <a 
               href='https://huzaifa25a.site/' 
               target='_blank' 
-              className='mt-[10px] border-2 px-2 py-1 hover:bg-[#b6b6b6c9] rounded-md hover:scale-105 transition-all duration-200'
+              className='mt-[10px] border-2 px-2 py-1 hover:bg-[#b6b6b6c9] rounded-md hover:scale-105 transition-all duration-200 active:bg-[#b6b6b6c9] active:scale-105'
             >
               Visit my portfolio
             </a>

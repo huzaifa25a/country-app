@@ -5,7 +5,7 @@ import './index.css'
 
 const Header = () => {
   return (
-    <nav id='nav' className='fixed top-0 w-full h-16 z-50 bg-[#3a3a3a] border-b-2 border-[#2f2f2f] flex justify-between px-4 py-1'>
+    <nav id='nav' className='fixed top-0 w-full h-auto z-50 bg-[#3a3a3a] border-b-2 border-[#2f2f2f] flex justify-between'>
       <NavLink to='/'>
         <div className='flex gap-2 items-center'>
           <img id='logo' src={logo} alt='logo' className='h-[64px]' />

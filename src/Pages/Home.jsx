@@ -30,7 +30,7 @@ const Home = () => {
           Discover detailed information about every country on the planet — including flags, capitals, languages, currencies, population, and interactive maps.
           Start exploring and learn more about the world, one country at a time!
         </span>
-        <span className='hover:bg-[#b6b6b6c9] p-2 rounded-md hover:scale-105 transition-all duration-200 text-[18px]'><NavLink to='/country'>View all countries</NavLink></span>
+        <span className='hover:bg-[#b6b6b6c9] p-2 rounded-md hover:scale-105 transition-all duration-200 text-[18px] active:scale-105 active:bg-[#b6b6b6c9]'><NavLink to='/country'>View all countries</NavLink></span>
       </div>
       <Footer/>
     </>
