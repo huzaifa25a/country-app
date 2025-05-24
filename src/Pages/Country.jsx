@@ -141,7 +141,7 @@ const Country = () => {
                     </button>
                 }
                 {showFilter && 
-                    <div className='flex flex-wrap gap-3 px-2 bg-[#ffffff39] rounded-lg py-2'>
+                    <div id='filters' className='flex flex-wrap gap-3 px-2 bg-[#ffffff39] rounded-lg py-2'>
                         <button 
                             id='byA-Z'
                             className={`p-1 rounded-md cursor-pointer text-[#ffffff94] hover:text-[#ffff] active:text-[#ffff] ${activeFilter === 'byA-Z'? 'text-white' : ''}`}
@@ -214,7 +214,7 @@ const Country = () => {
                 searchResults.map((country, index) => {
                     return(
                         <div key={index} className='w-auto h-auto p-1 flex flex-col items-center justify-around rounded-md border-2 border-[#b3b3b3] bg-[#ffffffbc] transition-all duration-300 hover:scale-105 hover:bg-[#ffffffa1] shadow-inner cursor-pointer active:scale-105 active:bg-[#ffffffa1]'>
-                            <img src={country.flags.png} alt='India' className='h-[150px] w-[300px] rounded shadow-lg'/>
+                            <img src={country.flags.png} alt='India' className='h-[150px] w-[300px] rounded shadow-lg mb-2'/>
                             <div className='flex flex-col w-[300px] justify-center items-center mb-[30px]'>
                                 <span className='text-black font-bold text-center mb-3'>{country.name.common}</span>
                                 <div className='flex flex-col text-start w-[250px] gap-1'>
@@ -257,7 +257,7 @@ const Country = () => {
                 filteredResults.slice(0, visibleCount).map((country, index) => {
                     return(
                         <div key={index} className='w-auto h-auto p-1 flex flex-col items-center justify-around rounded-md border-2 border-[#b3b3b3] bg-[#ffffffdc] transition-all duration-300 hover:scale-105 hover:bg-[#ffffffa1] shadow-inner cursor-pointer active:scale-105 active:bg-[#ffffffa1]'>
-                            <img src={country.flags.png} alt='India' className='h-[150px] w-[300px] rounded shadow-lg'/>
+                            <img src={country.flags.png} alt='India' className='h-[150px] w-[300px] rounded shadow-lg mb-2'/>
                             <div className='flex flex-col w-[300px] justify-center items-center mb-[30px]'>
                                 <span className='text-black font-bold text-center mb-3'>{country.name.common}</span>
                                 <div className='flex flex-col text-start w-[250px] gap-1'>
@@ -300,7 +300,7 @@ const Country = () => {
                 countryInfo.slice(0, visibleCount).map((country, index) => {
                     return(
                         <div key={index} className='w-auto h-auto p-1 flex flex-col items-center justify-around rounded-md border-2 border-[#b3b3b3] bg-[#ffffffdc] transition-all duration-300 hover:scale-105 hover:bg-[#ffffffa1] shadow-inner cursor-pointer active:scale-105 active:bg-[#ffffffa1]'>
-                            <img src={country.flags.png} alt='India' className='h-[150px] w-[300px] rounded shadow-lg'/>
+                            <img src={country.flags.png} alt='India' className='h-[150px] w-[300px] rounded shadow-lg mb-2'/>
                             <div className='flex flex-col w-[300px] justify-center items-center mb-[30px]'>
                                 <span className='text-black font-bold text-center mb-3'>{country.name.common}</span>
                                 <div className='flex flex-col text-start w-[250px] gap-1'>
@@ -354,7 +354,7 @@ const Country = () => {
                     </span>
                 </div>
             }
-            {(visibleCount < countryInfo.length && !showSearchResults && !showFilteredResults) ||
+            {(visibleCount < countryInfo.length && !showSearchResults && !showFilteredResults &&!DefaultResult) ||
              (visibleCount < searchResults.length && showSearchResults && searchResults.length > 16) ||
              (visibleCount < filteredResults.length && showFilteredResults && filteredResults.length > 16)?
                 <div className='flex gap-10'> 

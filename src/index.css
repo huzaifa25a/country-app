@@ -19,6 +19,9 @@ body{
   #search{
     width: 300px;
   }
+  #filters{
+    width: 325px;
+  }
 }
 
 @media screen and (max-width: 500px) {
