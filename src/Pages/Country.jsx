@@ -47,26 +47,22 @@ const Country = () => {
                 setSearchResults(list);
                 setShowSearchResults(true);
                 setDefaultResult(false);
-                setVisibleCount(NaN);
             }
             else{
                 setSearchResults([]);
                 setShowSearchResults(false);
                 setDefaultResult(true);
-                setVisibleCount(NaN);
             }
         }
         else{
             setShowSearchResults(false);
             setDefaultResult(false);
-            setVisibleCount(16);
         }
     }
 
     function sortCountry(e){
         const list = [...countryInfo];
         const buttonType = e.target.id;
-        const language = e.target.value;
 
         if(buttonType === 'byA-Z'){
             setActiveFilter('byA-Z');
@@ -84,28 +80,47 @@ const Country = () => {
             setActiveFilter('LowPop');
             list.sort((a,b) => a.population - b.population);
         }
-        else if(language){
-            console.log("Language Selected: ", language);
-            if(language === 'Select a Language'){
-                setFilteredResults([]);
-                setShowFilteredResults(false);
-                return;
-            }
-            const filteredList = list.filter((country) => country.languages ? Object.values(country.languages).map((lang) => lang).includes(language) : null);
-            console.log(language, "Speaking countries: ", filteredList);
-            setFilteredResults(filteredList);
-            setShowFilteredResults(true);
-            return
-        }
         setFilteredResults(list);
         setShowFilteredResults(true);
+    }
+
+    const filterByCurrency = () => {
+        const list = [...countryInfo];
+        const curr = document.getElementById('curr').value;
+        if(curr === 'Select a Currency'){
+            setFilteredResults([]);
+            setShowFilteredResults(false);
+            return;
+        }
+        setActiveFilter('currency');
+        const filteredList = list.filter((country) => country.currencies ? Object.values(country.currencies).map((currency) => `${currency.name.toLowerCase()} (${currency.symbol})`).join(', ').includes(curr.toLowerCase()) : null);
+        console.log(curr, 'using countries', filteredList);
+        setFilteredResults(filteredList);
+        setShowFilteredResults(true);
+        return
+    }
+
+    const filterByLanguage = () => {
+        const list = [...countryInfo];
+        const lang = document.getElementById('lang').value;
+        if(lang === 'Select a Language'){
+            setFilteredResults([]);
+            setShowFilteredResults(false);
+            return;
+        }
+        setActiveFilter('language');
+        const filteredList = list.filter((country) => country.languages ? Object.values(country.languages).map((lang) => lang).includes(lang) : null);
+        console.log(lang, 'speaking countries are: ', filteredList);
+        setFilteredResults(filteredList);
+        setShowFilteredResults(true);
+        return
     }
     
   return (
     <>
     <div className='flex flex-col items-center justify-center pt-30'>   
         <h1 className='text-[32px] font-semibold'>World Countries Information</h1>
-        <div className='flex gap-5 items-center justify-start w-full p-4'>
+        <div className='flex flex-wrap gap-5 items-center justify-start w-full p-4'>
             <div className='flex gap-5 items-center p-4'>
                 <img src={search} className='h-[24px]'/>
                 <input
@@ -113,18 +128,27 @@ const Country = () => {
                     type='text'
                     id='search'
                     placeholder='Search any country'
-                    onChange={(e) => findCounty(e.target.value)}
+                    onChange={(e) => {setShowFilter(false); setShowFilteredResults(false); findCounty(e.target.value)}}
                 />
             </div>
-            <div className='flex gap-6'>
-                <button 
-                    className={`px-2 py-1 rounded-md cursor-pointer border-2 border-white transition-all duration-75 hover:bg-[#6e6e6eb0] ${showFilter ? 'bg-[#6e6e6eb0]' : ''}`}
-                    onClick={() => {setShowFilter(!showFilter); setShowFilteredResults(false); setFilteredResults([]); setActiveFilter('')}}
-                >
-                    Filter
-                </button>
+            <div className='flex gap-6 items-center p-4'>
+                {showFilter ? 
+                    <button 
+                        className={`px-2 py-1 rounded-md cursor-pointer border-2 border-white transition-all duration-75 hover:bg-[#6e6e6eb0] ${showFilter ? 'bg-[#6e6e6eb0]' : ''}`}
+                        onClick={() => {setShowFilter(false); setShowFilteredResults(false); setFilteredResults([]); setActiveFilter('')}}
+                    >
+                        Clear
+                    </button>
+                    :
+                    <button 
+                        className={`px-2 py-1 rounded-md cursor-pointer border-2 border-white transition-all duration-75 hover:bg-[#6e6e6eb0] ${showFilter ? 'bg-[#6e6e6eb0]' : ''}`}
+                        onClick={() => {setShowFilter(true)}}
+                    >
+                        Filter
+                    </button>
+                }
                 {showFilter && 
-                    <div className='flex gap-3 p-2 bg-[#ffffff39] rounded-lg'>
+                    <div className='flex flex-wrap gap-3 px-2 bg-[#ffffff39] rounded-lg'>
                         <button 
                             id='byA-Z'
                             className={`p-1 rounded-md cursor-pointer text-[#ffffff94] hover:text-[#ffff] ${activeFilter === 'byA-Z'? 'text-white' : ''}`}
@@ -153,13 +177,31 @@ const Country = () => {
                         >
                             Lowest population
                         </button>
-                        <select id='language' onChange={sortCountry}>
+                        <select 
+                            id='lang' 
+                            onChange={filterByLanguage} 
+                            className={`text-[#ffffff94] cursor-pointer hover:text-[#ffff] ${activeFilter === 'language' ? 'text-white' : ''}`}
+                        >
                             <option className='text-black'>Select a Language</option>
                             <option className='text-black'>English</option>
                             <option className='text-black'>Hindi</option>
                             <option className='text-black'>Spanish</option>
                             <option className='text-black'>French</option>
                             <option className='text-black'>German</option>
+                            <option className='text-black'>Arabic</option>
+                        </select>
+                        <select 
+                            id='curr' 
+                            onChange={filterByCurrency}
+                            className={`text-[#ffffff94] cursor-pointer hover:text-[#ffff] ${activeFilter === 'currency' ? 'text-white' : ''}`}
+                        >
+                            <option className='text-black'>Select a Currency</option>
+                            <option className='text-black'>dollar ($)</option>
+                            <option className='text-black'>pound (£)</option>
+                            <option className='text-black'>euro (€)</option>
+                            <option className='text-black'>dinar</option>
+                            <option className='text-black'>dirham</option>
+                            <option className='text-black'>rupee (₹)</option>
                         </select>
                     </div>
                 }
@@ -310,7 +352,9 @@ const Country = () => {
                     </span>
                 </div>
             }
-            {visibleCount < countryInfo.length &&
+            {(visibleCount < countryInfo.length && !showSearchResults && !showFilteredResults) ||
+             (visibleCount < searchResults.length && showSearchResults && searchResults.length > 16) ||
+             (visibleCount < filteredResults.length && showFilteredResults && filteredResults.length > 16)?
                 <div className='flex gap-10'> 
                     <button 
                         className='p-1 rounded-md cursor-pointer transition-all duration-200 hover:scale-110 hover:bg-[#6e6e6eb0]'
@@ -324,7 +368,7 @@ const Country = () => {
                     >
                         <span>view all</span>
                     </button>
-                </div>
+                </div> : null
             }
         </div>
     </div>   
