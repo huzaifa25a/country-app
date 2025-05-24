@@ -120,11 +120,11 @@ const Country = () => {
     <>
     <div id='country' className='flex flex-col items-center justify-center pt-30'>   
         <h1 className='text-[32px] font-semibold text-center mb-[20px]'>World Countries Information</h1>
-        <div id='searchFilter' className='flex flex-wrap gap-10 items-center justify-start w-full p-4'>
-            <div className='flex gap-2 items-center px-2 py-4'>
+        <div id='searchFilter' className='flex flex-wrap gap-10 items-center justify-center w-full p-4'>
+            <div className='flex gap-3 items-center px-2 py-4'>
                 <img src={search} className='h-[24px]'/>
                 <input
-                    className='p-1.5 rounded-md border-[#979797] bg-[#979797e2] max-w-[400px]'
+                    className='p-1.5 rounded-md border-[#979797] bg-[#979797e2] w-[400px]'
                     type='text'
                     id='search'
                     placeholder='Search any country'

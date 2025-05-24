@@ -16,6 +16,9 @@ body{
   #rotating_earth{
     height: 400px;
   }
+  #search{
+    width: 300px;
+  }
 }
 
 @media screen and (max-width: 500px) {
@@ -51,5 +54,11 @@ body{
     justify-content: center;
     gap: 0px;
     padding: 0px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  #search{
+    width: 200px;
   }
 }
