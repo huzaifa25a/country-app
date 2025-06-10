@@ -17,12 +17,17 @@ const Country = () => {
 
     async function getCountries(){
         setLoading(true);
-        const countriesInfo = await fetch('https://restcountries.com/v3.1/all');
-        const response = await countriesInfo.json();
-        console.log("Results: ",response);
-        if(response){
-            setLoading(false);
-            setCountryInfo(response);
+        const regions = ['Europe', 'Asia', 'Africa', 'Americas', 'Oceania'];
+        let list = [];
+        for(const region of regions){
+            const countriesInfo = await fetch(`https://restcountries.com/v3.1/region/${region}`);
+            const response = await countriesInfo.json();
+            list = [...list, ...response];
+            console.log("Results: ",list);
+            if(response){
+                setLoading(false);
+                setCountryInfo(list);
+            }
         }
     }
 
